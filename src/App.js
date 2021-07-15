@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {numbersArray} from "./generate/generate";
+import generate from "./generate/generate";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    for (let i = 0; i < 5; i++) {
+        const gen = generate.hate();
+        if (numbersArray.includes(gen)) {
+            console.log("совпадение " + gen);
+            i--;
+        } else {
+            numbersArray[i] = gen;
+            console.log(gen);
+        }
+    }
+    console.log(numbersArray);
+    numbersArray.sort((a,b)=> a > b ? 1:-1);
+    console.log(numbersArray);
+    return (
+        <div>Hello world</div>
+    );
+};
 
 export default App;
